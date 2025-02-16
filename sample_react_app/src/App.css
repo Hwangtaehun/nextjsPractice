@@ -24,6 +24,47 @@
   font-size: 24px;
 }
 
+input {
+  margin: 5px;
+  padding: 5px;
+}
+
+button {
+  margin: 5px;
+  padding: 5px 15px;
+}
+
+ul, ol {
+  list-style-type: none;
+  padding: 0px;
+}
+
+li {
+  text-align: left;
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 20px;
+  border: solid 2px lightgray;
+  border-radius: 5px;
+}
+
+.ClassA {
+  font-size: 20px;
+  font-weight: normal;
+  border: solid 2px lightskyblue;
+  padding: 10px;
+  margin: 10px 50px;
+}
+
+.ClassB {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: darkblue;
+  padding: 12px;
+  margin: 10px 50px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
