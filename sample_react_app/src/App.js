@@ -1,16 +1,25 @@
-import { useState } from 'react';
 import './App.css';
+import { useState } from 'react';
 
-function Message(props) {
+var data = {
+  data: [
+    {name:"Kim"},
+    {name:"Lee"},
+    {name:"Park"},
+  ],
+  message: "Hello",
+};
+
+function Message() {
   return (
-    <p className="ClassA">{props.message}</p>
+    <p className="ClassA">{data.message}</p>
   )
 }
 
-function Data(props){
+function Data(){
   return(
     <ul>
-      {props.data.map((item, key) => {
+      {data.data.map((item, key) => {
         return(<li key={key}>{item.name}</li>)
       })}
     </ul>
@@ -18,17 +27,27 @@ function Data(props){
 }
 
 function App(props) {
-  const data = [
-    {name:"Kim"},
-    {name:"Lee"},
-    {name:"Park"},
-  ];
+  var [input, setInput] = useState("");
+
+  const doChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const doClick = () => {
+    data.data.push({name:input});
+    data.message = "you typed: \"" + input + "\".";
+    setInput("");
+  };
 
   return (
     <div className="App">
       <h1 className="ClassB">{props.title}</h1>
-      <Message message="This is sample message!"/>
-      <Data data={data}/>
+      <Message />
+      <div>
+        <input onChange={doChange} value={input}/>
+        <button onClick={doClick}>Click</button>
+      </div>
+      <Data />
     </div>
   );
 }
