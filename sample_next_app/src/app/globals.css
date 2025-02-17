@@ -21,3 +21,7 @@
 :any-link {
   @apply text-lg m-5 text-sky-600;
 }
+
+img {
+  @apply border-solid border-2 border-green-300 m-5 p-2;
+}
