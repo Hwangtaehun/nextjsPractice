@@ -15,5 +15,9 @@
 }
 
 .btn {
-  @apply px-7 py-2 mx-2 bg-blue-800 text white rounded-lg
+  @apply px-7 py-2 mx-2 bg-blue-800 text-white rounded-lg
+}
+
+:any-link {
+  @apply text-lg m-5 text-sky-600;
 }
