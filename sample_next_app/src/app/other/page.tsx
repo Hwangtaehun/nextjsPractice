@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import './style.css';
 
 export default function Other(){
     return (
