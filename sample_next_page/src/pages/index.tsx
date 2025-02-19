@@ -1,14 +1,22 @@
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
-const inter = Inter({ subsets: ['latin'] })
+export const getStaticProps = ( (context) => {
+  const data = {
+    title:"Index page", 
+    msg:"시작페이지입니다."
+  }
+  return { props: { data } }
+});
 
-export default function Home() {
+const inter = Inter({ subsets: ['latin'] });
+
+export default function Home({data = { msg : "시작페이지입니다."}}) {
   return (
     <main>
-      <h1>SSG application.</h1>
-      <p>This is sample page.</p>
-      <div><Link href="/other">Go "other"</Link></div>
+      <p>{data.msg}</p>
+      <div><Link href="/other">Go "Other".</Link></div>
     </main>
   );
 }

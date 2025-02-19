@@ -46,3 +46,15 @@ ul, ol {
 li {
   @apply text-xl mx-5 text-blue-700;
 }
+
+h1.header {
+  @apply text-2xl font-bold m-0 mb-5 px-5 py-3 text-white bg-red-900;
+}
+
+h1.footer {
+  @apply mt-10 mb-1 p-0;
+}
+
+p.footer {
+  @apply m-0 text-center text-sm font-bold;
+}
