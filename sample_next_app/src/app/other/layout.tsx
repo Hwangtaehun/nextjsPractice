@@ -1,15 +1,15 @@
 import './style.css';
 
 export default function OtherLayout({
-    childern,
+  children,
 }: {
-    childern: React.ReactNode
+  children: React.ReactNode
 }) {
     return(
         <html lang="ko">
             <body>
                 <h1 className="header">Sample Web Application</h1>
-                {childern}
+                {children}
                 <div className="footer">
                     <hr/>
                     <p className="footer-content">
