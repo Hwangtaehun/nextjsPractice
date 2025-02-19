@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
 
-export const getStaticProps = ( (context) => {
+export const getStaticProps: GetStaticProps = ((context) => {
   const data = {
     title:"Index page", 
     msg:"시작페이지입니다."
@@ -12,7 +12,7 @@ export const getStaticProps = ( (context) => {
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home({data = { msg : "시작페이지입니다."}}) {
+export default function Home({data}) {
   return (
     <main>
       <p>{data.msg}</p>
