@@ -16,20 +16,7 @@ export default function Name({data}) {
     );
 }
 
-export function getStaticPaths(){
-    const path = [
-        '/name/kim',
-        '/name/lee',
-        '/name/park'
-    ];
-
-    return {
-        paths: path,
-        fallback: false
-    };
-}
-
-export function getStaticProps({params}) {
+export function getStaticSideProps({params}) {
     const data = {
         kim: {
             title: 'KIM-web',
@@ -45,9 +32,17 @@ export function getStaticProps({params}) {
         }
     };
 
-    return {
-        props: {
-            data: data[params.name]
+    if (data[params.name]) {
+        return {
+            props: {
+                data: data[params.name]
+            }
+        };
+    } else {
+        return {
+            props: {
+                data: {title: "No data", msg:"데이터가 없습니다."}
+            }
         }
-    };
+    }
 }
