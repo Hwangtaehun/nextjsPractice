@@ -1,22 +1,25 @@
-"use server"
-import { Metadata } from "next";
+"use client";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export async function generateMetadata() {
-  return {
-    title: 'Index page',
-  };
-}
+function SearchParamsContent(){
+  const searchParams = useSearchParams();
 
-const defaultProps = {
-  title: "Static page",
-  msg: "This is static page sample."
-};
-
-export default function Home() {
   return(
     <main>
-      <h1 className="title">{defaultProps.title}</h1>
-      <p className="msg">{defaultProps.msg}</p>
+      <h1 className="title">Index page</h1>
+      <ul>
+        <li>ID: {searchParams.get('id')}</li>
+        <li>PASS: {searchParams.get('pass')}</li>
+      </ul>
     </main>
+  )
+}
+
+export default function Home() {
+  return (
+    <Suspense>
+      <SearchParamsContent />
+    </Suspense>
   );
 }
