@@ -3,9 +3,6 @@ import type { AppProps } from 'next/app';
 import Layout from './_layout';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <Layout {...pageProps}>
-      <Component {...pageProps} />
-    </Layout>
-  );
+  console.log(pageProps);
+  return<Component{...pageProps} />;
 }
