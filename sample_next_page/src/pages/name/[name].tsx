@@ -32,7 +32,7 @@ var data = {
     }
 };
 
-export function getStaticProps(){
+export function getStaticPaths(){
     const path = [
         '/name/kim',
         '/name/lee',

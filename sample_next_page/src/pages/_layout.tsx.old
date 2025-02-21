@@ -1,4 +1,4 @@
-export default function Layout({ children, data}) {
+export default function Layout({children, data}) {
     return (
       <>
         <h1 className="header">{data.title}</h1>
