@@ -1,12 +1,23 @@
-import { Inter } from 'next/font/google';
+'use client';
 
-const inter = Inter({subsets: ['latin']})
+import { Inter } from 'next/font/google';
+import useSWR from 'swr';
+
+const inter = Inter({ subsets: ['latin'] });
+
+const url = '/api/hello';
+const fetcher = (...args) => fetch(...args)
+  .then(res => res.json());
 
 export default function Home() {
-  return(
+  const {data, error, isLoading} = useSWR(url, fetcher);
+  return (
     <main>
-      <h1 className="header">Static page</h1>
-      <p>정적 페이지입니다. 빌드 시에 렌더링됩니다.</p>
+      <h1 className="header">Index page</h1>
+      <p>API를 이용하는 예제입니다.</p>
+      <p className="border p-3">
+        result: {error ? "ERROR!!" : isLoading ? "loading..." : data.name}
+      </p>
     </main>
   );
 }
