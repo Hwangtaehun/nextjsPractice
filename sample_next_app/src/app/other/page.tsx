@@ -1,9 +1,16 @@
-"use server"
-import Link from "next/link";
-import {readData} from '../server-action'
+"use client"
+import Link from "next/link"
+import { readData } from "../server-action"
+import { useState,useEffect } from "react"
 
-export default async function Other() {
-    const data = await readData();
+export default function Other() {
+    const [data,setData] = useState('nodata');
+    useEffect(()=>{
+        readData().then(res=>{
+            setData(res);
+        });
+    },[]);
+
     return(
         <main>
             <h1 className="title">Other page</h1>
