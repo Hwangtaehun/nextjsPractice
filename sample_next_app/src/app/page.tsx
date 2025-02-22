@@ -1,25 +1,22 @@
-"use client";
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+"use server"
 
-function SearchParamsContent(){
-  const searchParams = useSearchParams();
+const url = 'http://localhost:3000/sample.json';
 
+async function getSampleData(){
+  const resp = await fetch(
+    url,
+    {cache: 'no-store'}
+  );
+  const result = await resp.json();
+  return result;
+}
+
+export default async function Home() {
+  const data = await getSampleData();
   return(
     <main>
       <h1 className="title">Index page</h1>
-      <ul>
-        <li>ID: {searchParams.get('id')}</li>
-        <li>PASS: {searchParams.get('pass')}</li>
-      </ul>
+      <p className="msg">{data.message}</p>
     </main>
-  )
-}
-
-export default function Home() {
-  return (
-    <Suspense>
-      <SearchParamsContent />
-    </Suspense>
   );
 }
