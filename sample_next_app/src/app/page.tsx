@@ -1,6 +1,6 @@
 "use server";
-import { SWRProvider } from "./swr-provider";
-import GetData from "./GetData";
+import { SWRProvider } from './swr-provider';
+import GetData from './GetData';
 
 export default async function Home() {
   return(
