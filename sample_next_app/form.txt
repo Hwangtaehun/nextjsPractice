@@ -1,2 +1,2 @@
-NAME: lee
-PASS: flower
+NAME: kim
+PASS: grass
