@@ -1,22 +1,25 @@
 "use server";
+import fs from 'fs';
 
-const url = 'http://localhost:3000/sample.json';
+const path = './data.txt';
 
 export async function GET(request: Request){
-    const result = await fetch(url, {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-    const data = await result.json();
-
-    const {searchParams} = new URL(request.url);
-    var id = +searchParams.get('id');
-    id = id < 0 ? 0 : id >= data.data.length ? data.data.length - 1 : id;
-    const item = data.data[id];
-
-    return new Response(JSON.stringify(item), {
+    // 파일 읽기
+    const content = fs.readFileSync(path, {flag:'a+'}).toString().trim();
+    // 읽어온 콘텐츠를 반환한다.
+    return new Response(JSON.stringify({content:content}), {
         status: 200,
         headers: {'Content-Type': 'application/json'},
     });
+}
+
+export async function POST(request: Request) {
+    const body = await request.json();
+    fs.appendFileSync(path, body.content + "\n");
+    return new Response(
+        JSON.stringify({content:'ok'}),
+        {
+            status: 200,
+            headers: {'Content-Type': 'application/json'},
+        });
 }
